@@ -95,6 +95,7 @@ int main(void)
   const double UPPER_VOLTAGE_LIMIT = 3.3;
   uint32_t adcSum = 0;
   uint32_t adcValue = 0;
+  double adcAverage = 0;
   double voltage = 0;
   volatile HAL_StatusTypeDef adcPollResult;
 
@@ -116,7 +117,7 @@ int main(void)
 	  }
 	}
 
-	double adcAverage = adcSum / NUM_ITERATIONS;
+	adcAverage = adcSum / NUM_ITERATIONS;
 	voltage = adcAverage / 4096 * UPPER_VOLTAGE_LIMIT;
 
 	// Reset sum for the next iteration
